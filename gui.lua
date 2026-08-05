@@ -9,7 +9,7 @@ gui.ResetOnSpawn = false
 gui.Parent = player:WaitForChild("PlayerGui")
 
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 300, 0, 450)
+frame.Size = UDim2.new(0, 300, 0, 320)
 frame.Position = UDim2.new(0.5, -150, 0.5, -175)
 frame.BackgroundColor3 = Color3.fromRGB(35,35,35)
 frame.Parent = gui
@@ -75,6 +75,48 @@ close.Font = Enum.Font.GothamBold
 close.BackgroundColor3 = Color3.fromRGB(220,60,60)
 close.TextColor3 = Color3.new(1,1,1)
 close.Parent = frame
+
+local minimize = Instance.new("TextButton")
+minimize.Size = UDim2.new(0,35,0,35)
+minimize.Position = UDim2.new(1,-80,0,5)
+minimize.Text = "-"
+minimize.TextScaled = true
+minimize.Font = Enum.Font.GothamBold
+minimize.BackgroundColor3 = Color3.fromRGB(70,70,70)
+minimize.TextColor3 = Color3.new(1,1,1)
+minimize.Parent = frame
+
+local minimized = false
+
+minimize.MouseButton1Click:Connect(function()
+
+    minimized = not minimized
+
+    if minimized then
+
+        frame.Size = UDim2.new(0,60,0,60)
+
+        for _,obj in pairs(frame:GetChildren()) do
+            if obj ~= minimize then
+                obj.Visible = false
+            end
+        end
+
+        minimize.Visible = true
+        minimize.Text = "MM2"
+
+    else
+
+        frame.Size = UDim2.new(0,300,0,350)
+
+        for _,obj in pairs(frame:GetChildren()) do
+            obj.Visible = true
+        end
+
+        minimize.Text = "-"
+
+    end
+end)
 
 local closeCorner = Instance.new("UICorner")
 closeCorner.CornerRadius = UDim.new(0,8)
