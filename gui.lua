@@ -57,13 +57,26 @@ search.TextColor3 = Color3.new(1,1,1)
 search.Parent = frame
 
 search:GetPropertyChangedSignal("Text"):Connect(function()
-    local text = string.lower(search.Text)
+    local query = string.lower(search.Text)
+
+    if query == "" then
+        result.Text = "Search an item..."
+        return
+    end
 
     for name, data in pairs(Values.Godlies) do
-        if string.find(string.lower(name), text) then
-            print(name, data.Value)
+        if string.find(string.lower(name), query) then
+            result.Text =
+                name ..
+                "\nValue: " .. data.Value ..
+                "\nDemand: " .. data.Demand ..
+                " | Rarity: " .. data.Rarity ..
+                "\nChange: " .. data.Change
+            return
         end
     end
+
+    result.Text = "No item found"
 end)
 
 local searchCorner = Instance.new("UICorner")
