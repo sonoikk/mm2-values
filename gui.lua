@@ -1,3 +1,5 @@
+return function(Values)
+
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local gui = Instance.new("ScreenGui")
@@ -85,3 +87,5 @@ for i,v in ipairs(buttons) do
 end
 
 print("MM2 Mobile Helper loaded!")
+    
+end    
