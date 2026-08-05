@@ -1,9 +1,13 @@
-print("Main started")
+print("Loading MM2 Helper...")
 
-local CreateGUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/sonoikk/mm2-values/refs/heads/main/gui.lua"))()
+local Values = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/sonoikk/mm2-values/main/values.lua"
+))()
 
-print("GUI loaded:", CreateGUI)
+local CreateGUI = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/sonoikk/mm2-values/main/gui.lua"
+))()
 
-CreateGUI({})
+CreateGUI(Values)
 
-print("Done")
+print("MM2 Helper Loaded!")
