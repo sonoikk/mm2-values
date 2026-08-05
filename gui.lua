@@ -104,7 +104,7 @@ local buttons = {
 for i,v in ipairs(buttons) do
     local b = Instance.new("TextButton")
     b.Size = UDim2.new(0.9,0,0,40)
-    b.Position = UDim2.new(0.05,0,0,110 + (i-1)*50)
+    b.Position = UDim2.new(0.05,0,0,230 + (i-1)*50)
     b.BackgroundColor3 = Color3.fromRGB(45,45,45)
     b.Text = v
     b.TextScaled = true
