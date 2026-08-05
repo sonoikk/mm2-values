@@ -2,6 +2,7 @@ return function(Values)
 
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
+repeat task.wait() until player
 local gui = Instance.new("ScreenGui")
 gui.Name = "MM2MobileHelper"
 gui.ResetOnSpawn = false
@@ -60,11 +61,11 @@ searchCorner.CornerRadius = UDim.new(0,8)
 searchCorner.Parent = search
 
 local buttons = {
-    "💎 Value Checker",
-    "🟢 Mega W",
-    "🟢 W",
-    "🟡 Fair"
-}
+    "Value Checker",
+    "Mega W",
+    "W",
+    "Fair"
+    }
 
 for i,v in ipairs(buttons) do
     local b = Instance.new("TextButton")
