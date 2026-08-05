@@ -83,6 +83,10 @@ for i,v in ipairs(buttons) do
     c.Parent = b
 
     b.MouseButton1Click:Connect(function()
-        print(v.." clicked!")
-    end)
+    print(v.." clicked!")
+end)
+end
+
+print("MM2 GUI loaded!")
+
 end
