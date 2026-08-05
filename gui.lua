@@ -56,6 +56,17 @@ search.BackgroundColor3 = Color3.fromRGB(55,55,55)
 search.TextColor3 = Color3.new(1,1,1)
 search.Parent = frame
 
+local result = Instance.new("TextLabel")
+result.Size = UDim2.new(0.9,0,0,80)
+result.Position = UDim2.new(0.05,0,0,260)
+result.BackgroundColor3 = Color3.fromRGB(45,45,45)
+result.TextColor3 = Color3.new(1,1,1)
+result.TextScaled = true
+result.TextWrapped = true
+result.Font = Enum.Font.Gotham
+result.Text = "Search an item..."
+result.Parent = frame
+
 search:GetPropertyChangedSignal("Text"):Connect(function()
     local query = string.lower(search.Text)
 
