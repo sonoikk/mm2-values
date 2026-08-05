@@ -56,6 +56,16 @@ search.BackgroundColor3 = Color3.fromRGB(55,55,55)
 search.TextColor3 = Color3.new(1,1,1)
 search.Parent = frame
 
+search:GetPropertyChangedSignal("Text"):Connect(function()
+    local text = string.lower(search.Text)
+
+    for name, data in pairs(Values.Godlies) do
+        if string.find(string.lower(name), text) then
+            print(name, data.Value)
+        end
+    end
+end)
+
 local searchCorner = Instance.new("UICorner")
 searchCorner.CornerRadius = UDim.new(0,8)
 searchCorner.Parent = search
