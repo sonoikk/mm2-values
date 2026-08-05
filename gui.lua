@@ -86,7 +86,3 @@ for i,v in ipairs(buttons) do
         print(v.." clicked!")
     end)
 end
-
-print("MM2 GUI loaded!")
-
-end
