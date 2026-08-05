@@ -57,8 +57,8 @@ search.TextColor3 = Color3.new(1,1,1)
 search.Parent = frame
 
 local result = Instance.new("TextLabel")
-result.Size = UDim2.new(0.9,0,0,80)
-result.Position = UDim2.new(0.05,0,0,260)
+result.Size = UDim2.new(0.9,0,0,100)
+result.Position = UDim2.new(0.05,0,0,110)
 result.BackgroundColor3 = Color3.fromRGB(45,45,45)
 result.TextColor3 = Color3.new(1,1,1)
 result.TextScaled = true
