@@ -2,7 +2,7 @@ return function(Values)
 
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
-repeat task.wait() until player
+
 local gui = Instance.new("ScreenGui")
 gui.Name = "MM2MobileHelper"
 gui.ResetOnSpawn = false
@@ -31,8 +31,8 @@ local close = Instance.new("TextButton")
 close.Size = UDim2.new(0,35,0,35)
 close.Position = UDim2.new(1,-40,0,5)
 close.Text = "X"
-close.Font = Enum.Font.GothamBold
 close.TextScaled = true
+close.Font = Enum.Font.GothamBold
 close.BackgroundColor3 = Color3.fromRGB(220,60,60)
 close.TextColor3 = Color3.new(1,1,1)
 close.Parent = frame
@@ -50,8 +50,8 @@ search.Size = UDim2.new(0.9,0,0,40)
 search.Position = UDim2.new(0.05,0,0,55)
 search.PlaceholderText = "Search item..."
 search.Text = ""
-search.Font = Enum.Font.Gotham
 search.TextScaled = true
+search.Font = Enum.Font.Gotham
 search.BackgroundColor3 = Color3.fromRGB(55,55,55)
 search.TextColor3 = Color3.new(1,1,1)
 search.Parent = frame
@@ -65,7 +65,7 @@ local buttons = {
     "Mega W",
     "W",
     "Fair"
-    }
+}
 
 for i,v in ipairs(buttons) do
     local b = Instance.new("TextButton")
@@ -87,6 +87,6 @@ for i,v in ipairs(buttons) do
     end)
 end
 
-print("MM2 Mobile Helper loaded!")
-    
-end    
+print("MM2 GUI loaded!")
+
+end
