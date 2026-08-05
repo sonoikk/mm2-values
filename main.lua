@@ -1,5 +1,3 @@
-return function(Values)
-
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 repeat task.wait() until player
