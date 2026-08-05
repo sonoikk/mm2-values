@@ -14,6 +14,45 @@ frame.Position = UDim2.new(0.5, -150, 0.5, -175)
 frame.BackgroundColor3 = Color3.fromRGB(35,35,35)
 frame.Parent = gui
 
+local UIS = game:GetService("UserInputService")
+
+local dragging = false
+local dragStart
+local startPos
+
+frame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 
+    or input.UserInputType == Enum.UserInputType.Touch then
+        
+        dragging = true
+        dragStart = input.Position
+        startPos = frame.Position
+    end
+end)
+
+frame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement
+    or input.UserInputType == Enum.UserInputType.Touch then
+        
+        if dragging then
+            local delta = input.Position - dragStart
+            frame.Position = UDim2.new(
+                startPos.X.Scale,
+                startPos.X.Offset + delta.X,
+                startPos.Y.Scale,
+                startPos.Y.Offset + delta.Y
+            )
+        end
+    end
+end)
+
+UIS.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1
+    or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = false
+    end
+end)
+
 local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0,12)
 corner.Parent = frame
@@ -41,8 +80,43 @@ local closeCorner = Instance.new("UICorner")
 closeCorner.CornerRadius = UDim.new(0,8)
 closeCorner.Parent = close
 
+local minimized = false
+
+local oldSize = frame.Size
+
 close.MouseButton1Click:Connect(function()
-    gui:Destroy()
+    if not minimized then
+        minimized = true
+        
+        frame.Size = UDim2.new(0,60,0,60)
+        title.Visible = false
+        search.Visible = false
+        result.Visible = false
+        
+        for _,v in pairs(frame:GetChildren()) do
+            if v:IsA("TextButton") and v ~= close then
+                v.Visible = false
+            end
+        end
+        
+        close.Text = "+"
+        
+    else
+        minimized = false
+        
+        frame.Size = oldSize
+        title.Visible = true
+        search.Visible = true
+        result.Visible = true
+        
+        for _,v in pairs(frame:GetChildren()) do
+            if v:IsA("TextButton") then
+                v.Visible = true
+            end
+        end
+        
+        close.Text = "X"
+    end
 end)
 
 local search = Instance.new("TextBox")
