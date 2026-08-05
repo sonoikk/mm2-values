@@ -746,11 +746,12 @@ local Values = {
          Demand = 1,
          Rarity = 1,
          Change = "0"
+        }
     },
         
     Ancients = {
 
-    },
+    }
 
     Vintages = {
 
