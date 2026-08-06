@@ -4,10 +4,14 @@ local Values = loadstring(game:HttpGet(
     "https://raw.githubusercontent.com/sonoikk/mm2-values/main/values.lua"
 ))()
 
+local Offers = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/sonoikk/mm2-values/main/offers.lua"
+))()
+
 local CreateGUI = loadstring(game:HttpGet(
     "https://raw.githubusercontent.com/sonoikk/mm2-values/main/gui.lua"
 ))()
 
-CreateGUI(Values)
+CreateGUI(Values, Offers)
 
 print("MM2 Helper Loaded!")
