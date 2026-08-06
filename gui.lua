@@ -58,10 +58,6 @@ frame.Position = UDim2.new(0.5, -150, 0.5, -175)
 frame.BackgroundColor3 = Color3.fromRGB(35,35,35)
 frame.Parent = gui
 frame.Active = true
-mini.Active = true
-
-makeDraggable(frame)
-makeDraggable(mini)
 	
 local mini = Instance.new("TextButton")
 mini.Size = UDim2.new(0,50,0,50)
@@ -74,6 +70,9 @@ mini.TextColor3 = Color3.new(1,1,1)
 mini.Visible = false
 mini.Parent = gui
 mini.Active = true
+
+makeDraggable(frame)
+makeDraggable(mini)
 
 local miniCorner = Instance.new("UICorner")
 miniCorner.CornerRadius = UDim.new(0,12)
