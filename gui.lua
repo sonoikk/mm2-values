@@ -58,6 +58,8 @@ frame.Position = UDim2.new(0.5, -150, 0.5, -175)
 frame.BackgroundColor3 = Color3.fromRGB(35,35,35)
 frame.Parent = gui
 frame.Active = true
+
+makeDraggable(frame)
 	
 local mini = Instance.new("TextButton")
 mini.Size = UDim2.new(0,50,0,50)
@@ -81,7 +83,7 @@ local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0,12)
 corner.Parent = frame
 
-local title = Instance.new("TextButton")
+local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1,-90,0,40)
 title.Position = UDim2.new(0,10,0,0)
 title.BackgroundTransparency = 1
@@ -89,10 +91,7 @@ title.Text = "MM2 Mobile Helper"
 title.TextScaled = true
 title.Font = Enum.Font.GothamBold
 title.TextColor3 = Color3.new(1,1,1)
-title.AutoButtonColor = false
 title.Parent = frame
-
-makeDragabble(title)
 
 local close = Instance.new("TextButton")
 close.Size = UDim2.new(0,35,0,35)
