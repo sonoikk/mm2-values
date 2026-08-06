@@ -1,4 +1,4 @@
-return function(Values, Offers)
+return function(Values)
 	
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
@@ -53,8 +53,8 @@ local function makeDraggable(object)
 	end
 
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0,300,0,360)
-frame.Position = UDim2.new(0.5, -150, 0.5, -175)
+frame.Size = UDim2.new(0,300,0,210)
+frame.Position = UDim2.new(0.5, -150, 0.5, -100)
 frame.BackgroundColor3 = Color3.fromRGB(35,35,35)
 frame.Parent = gui
 frame.Active = true
@@ -84,7 +84,7 @@ corner.CornerRadius = UDim.new(0,12)
 corner.Parent = frame
 
 local title = Instance.new("TextLabel")
-title.Size = UDim2.new(1,-90,0,40)
+title.Size = UDim2.new(1,-100,0,40)
 title.Position = UDim2.new(0,10,0,0)
 title.BackgroundTransparency = 1
 title.Text = "MM2 Mobile Helper"
@@ -144,7 +144,7 @@ search.TextColor3 = Color3.new(1,1,1)
 search.Parent = frame
 
 local result = Instance.new("TextLabel")
-result.Size = UDim2.new(0.9,0,0,70)
+result.Size = UDim2.new(0.9,0,0,60)
 result.Position = UDim2.new(0.05,0,0,110)
 result.BackgroundColor3 = Color3.fromRGB(45,45,45)
 result.TextColor3 = Color3.new(1,1,1)
@@ -182,69 +182,6 @@ searchCorner.CornerRadius = UDim.new(0,8)
 searchCorner.Parent = search
 
 local function checkTrade(yourItems, theirItems)
-
-    local yourValue = 0
-    local theirValue = 0
-
-    for _,item in pairs(yourItems) do
-        if Values.Godlies[item] then
-            yourValue += Values.Godlies[item].Value
-        end
-    end
-
-    for _,item in pairs(theirItems) do
-        if Values.Godlies[item] then
-            theirValue += Values.Godlies[item].Value
-        end
-    end
-
-    if yourValue == 0 then
-        return "Not found"
-    end
-
-    local percent = ((theirValue - yourValue) / yourValue) * 100
-
-    if percent >= Offers.MegaW then
-        return "MEGA W +"..math.floor(percent).."%"
-    elseif percent >= Offers.W then
-        return "W +"..math.floor(percent).."%"
-    elseif percent >= Offers.L then
-        return "Fair "..math.floor(percent).."%"
-    elseif percent >= Offers.MegaL then
-        return "L "..math.floor(percent).."%"
-    else
-        return "MEGA L "..math.floor(percent).."%"
-    end
-	end
-
-local buttons = {
-    "Value Checker",
-    "Mega W",
-    "W",
-    "Fair",
-    "L",
-    "Mega L"
-	}
-
-for i,v in ipairs(buttons) do
-    local b = Instance.new("TextButton")
-    b.Size = UDim2.new(0.9,0,0,35)
-    b.Position = UDim2.new(0.05,0,0,180 + (i-1)*40)
-    b.BackgroundColor3 = Color3.fromRGB(45,45,45)
-    b.Text = v
-    b.TextScaled = true
-    b.Font = Enum.Font.GothamBold
-    b.TextColor3 = Color3.new(1,1,1)
-    b.Parent = frame
-
-    local c = Instance.new("UICorner")
-    c.CornerRadius = UDim.new(0,8)
-    c.Parent = b
-
-    b.MouseButton1Click:Connect(function()
-    print(v.." clicked!")
-end)
-end
 
 print("MM2 GUI loaded!")
 
