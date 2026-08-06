@@ -14,43 +14,69 @@ frame.Position = UDim2.new(0.5, -150, 0.5, -175)
 frame.BackgroundColor3 = Color3.fromRGB(35,35,35)
 frame.Parent = gui
 
+local mini = Instance.new("TextButton")
+mini.Size = UDim2.new(0,50,0,50)
+mini.Position = frame.Position
+mini.Text = "MM2"
+mini.TextScaled = true
+mini.Font = Enum.Font.GothamBold
+mini.BackgroundColor3 = Color3.fromRGB(35,35,35)
+mini.TextColor3 = Color3.new(1,1,1)
+mini.Visible = false
+mini.Parent = gui
+
+local miniCorner = Instance.new("UICorner")
+miniCorner.CornerRadius = UDim.new(0,12)
+miniCorner.Parent = mini
+
 local UIS = game:GetService("UserInputService")
 
 local dragging = false
 local dragStart
 local startPos
 
+local function startDrag(input)
+	dragging = true
+	dragStart = input.Position
+	startPos = frame.Position
+end
+
 frame.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 
-    or input.UserInputType == Enum.UserInputType.Touch then
-        
-        dragging = true
-        dragStart = input.Position
-        startPos = frame.Position
-    end
+	if input.UserInputType == Enum.UserInputType.MouseButton1
+	or input.UserInputType == Enum.UserInputType.Touch then
+		startDrag(input)
+	end
+end)
+
+close.InputBegan:Connect(function(input)
+	if minimized and (
+		input.UserInputType == Enum.UserInputType.MouseButton1
+		or input.UserInputType == Enum.UserInputType.Touch
+	) then
+		startDrag(input)
+	end
 end)
 
 frame.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement
-    or input.UserInputType == Enum.UserInputType.Touch then
-        
-        if dragging then
-            local delta = input.Position - dragStart
-            frame.Position = UDim2.new(
-                startPos.X.Scale,
-                startPos.X.Offset + delta.X,
-                startPos.Y.Scale,
-                startPos.Y.Offset + delta.Y
-            )
-        end
-    end
+	if dragging and (
+		input.UserInputType == Enum.UserInputType.MouseMovement
+		or input.UserInputType == Enum.UserInputType.Touch
+	) then
+		local delta = input.Position - dragStart
+		frame.Position = UDim2.new(
+			startPos.X.Scale,
+			startPos.X.Offset + delta.X,
+			startPos.Y.Scale,
+			startPos.Y.Offset + delta.Y
+		)
+	end
 end)
 
 UIS.InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1
-    or input.UserInputType == Enum.UserInputType.Touch then
-        dragging = false
-    end
+	if input.UserInputType == Enum.UserInputType.MouseButton1
+	or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = false
+	end
 end)
 
 local corner = Instance.new("UICorner")
@@ -89,38 +115,16 @@ minimize.BackgroundColor3 = Color3.fromRGB(70,70,70)
 minimize.TextColor3 = Color3.new(1,1,1)
 minimize.Parent = frame
 
-local minimized = false
-
-minimize.MouseButton1Click:Connect(function()
-
-    minimized = not minimized
-
-    if minimized then
-
-        frame.Size = UDim2.new(0,60,0,60)
-
-        for _,obj in pairs(frame:GetChildren()) do
-            if obj ~= minimize then
-                obj.Visible = false
-            end
-        end
-
-        minimize.Visible = true
-        minimize.Text = "MM2"
-
-    else
-
-        frame.Size = UDim2.new(0,300,0,350)
-
-        for _,obj in pairs(frame:GetChildren()) do
-            obj.Visible = true
-        end
-
-        minimize.Text = "-"
-
-    end
+close.MouseButton1Click:Connect(function()
+    frame.Visible = false
+    mini.Visible = true
 end)
 
+mini.MouseButton1Click:Connect(function()
+    frame.Visible = true
+    mini.Visible = false
+end)
+    
 local closeCorner = Instance.new("UICorner")
 closeCorner.CornerRadius = UDim.new(0,8)
 closeCorner.Parent = close
