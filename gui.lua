@@ -48,20 +48,49 @@ frame.InputBegan:Connect(function(input)
 	end
 end)
 
-frame.InputChanged:Connect(function(input)
-	if dragging and (
-		input.UserInputType == Enum.UserInputType.MouseMovement
-		or input.UserInputType == Enum.UserInputType.Touch
-	) then
-		local delta = input.Position - dragStart
-		frame.Position = UDim2.new(
-			startPos.X.Scale,
-			startPos.X.Offset + delta.X,
-			startPos.Y.Scale,
-			startPos.Y.Offset + delta.Y
-		)
+local function makeDraggable(object)
+
+    local dragging = false
+    local dragStart
+    local startPos
+
+    object.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1
+        or input.UserInputType == Enum.UserInputType.Touch then
+
+            dragging = true
+            dragStart = input.Position
+            startPos = object.Position
+        end
+    end)
+
+    UIS.InputChanged:Connect(function(input)
+
+        if dragging and (
+            input.UserInputType == Enum.UserInputType.MouseMovement
+            or input.UserInputType == Enum.UserInputType.Touch
+        ) then
+
+            local delta = input.Position - dragStart
+
+            object.Position = UDim2.new(
+                startPos.X.Scale,
+                startPos.X.Offset + delta.X,
+                startPos.Y.Scale,
+                startPos.Y.Offset + delta.Y
+            )
+        end
+    end)
+
+    UIS.InputEnded:Connect(function(input)
+
+        if input.UserInputType == Enum.UserInputType.MouseButton1
+        or input.UserInputType == Enum.UserInputType.Touch then
+
+            dragging = false
+        end
+    end)
 	end
-end)
 
 UIS.InputEnded:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1
@@ -93,8 +122,7 @@ close.BackgroundColor3 = Color3.fromRGB(220,60,60)
 close.TextColor3 = Color3.new(1,1,1)
 close.Parent = frame
 close.MouseButton1Click:Connect(function()
-    frame.Visible = false
-    mini.Visible = true
+    gui:Destroy()
 end)
 
 local minimize = Instance.new("TextButton")
