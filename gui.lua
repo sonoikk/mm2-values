@@ -70,7 +70,6 @@ mini.Visible = false
 mini.Parent = gui
 
 makeDraggable(mini)
-makeDraggable(frame)
 
 local miniCorner = Instance.new("UICorner")
 miniCorner.CornerRadius = UDim.new(0,12)
@@ -88,6 +87,8 @@ title.TextScaled = true
 title.Font = Enum.Font.GothamBold
 title.TextColor3 = Color3.new(1,1,1)
 title.Parent = frame
+
+makeDraggable(title)
 
 local close = Instance.new("TextButton")
 close.Size = UDim2.new(0,35,0,35)
