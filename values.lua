@@ -487,7 +487,106 @@ local Values = {
         Change = "0"
     },
     
-        ["Bioblade"] = {
+    ["Icebeam"] = {
+        Value = 18,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-2"
+    },
+    
+    ["Pixel"] = {
+        Value = 17,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-3"
+    },
+    
+    ["Ginger Luger"] = {
+        Value = 17,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-3"
+    },
+    
+    ["Iceflake"] = {
+        Value = 15,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-2"
+    },
+    
+    ["Gemstone"] = {
+        Value = 15,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-2"
+    },
+    
+    ["Old Glory"] = {
+        Value = 15,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-2"
+    },
+        
+    ["Eternalcane"] = {
+        Value = 13,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-2"
+    },
+    
+    ["Deathshard"] = {
+        Value = 13,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-2"
+    },
+    
+    ["Jinglegun"] = {
+        Value = 13,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-2"
+    },
+    
+    ["Gingerblade"] = {
+        Value = 13,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-2"
+    },
+    
+    ["Lugercane"] = {
+        Value = 13,
+        Range = "N/A",
+        Stability = "Stable",
+        Demand = 1,
+        Rarity = 2,
+        Change = "-2"
+    },
+    
+    ["Bioblade"] = {
         Value = 8,
         Range = "N/A",
         Stability = "Stable",
