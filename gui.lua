@@ -101,12 +101,57 @@ miniCorner.Parent = mini
 
 local miniStroke = Instance.new("UIStroke")
 miniStroke.Thickness = 2
+miniStroke.Parent = mini
+
+local miniGradient = Instance.new("UIGradient")
+miniGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0,255,170)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0,120,255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0,255,170))
+}
+miniGradient.Parent = miniStroke
+
+TweenService:Create(
+    miniGradient,
+    TweenInfo.new(3, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1),
+    {Rotation = 360}
+):Play()
+
+local miniStroke = Instance.new("UIStroke")
+miniStroke.Thickness = 2
 miniStroke.Color = Color3.fromRGB(120,120,255)
 miniStroke.Parent = mini
 
 local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0,12)
 corner.Parent = frame
+
+local stroke = Instance.new("UIStroke")
+stroke.Thickness = 2
+stroke.Parent = frame
+
+local gradient = Instance.new("UIGradient")
+gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0,170,255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(170,0,255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0,170,255))
+}
+gradient.Parent = stroke
+
+local rotateTween = TweenService:Create(
+    gradient,
+    TweenInfo.new(
+        3,
+        Enum.EasingStyle.Linear,
+        Enum.EasingDirection.InOut,
+        -1
+    ),
+    {
+        Rotation = 360
+    }
+)
+
+rotateTween:Play()
 
 local shadow = Instance.new("UIStroke")
 shadow.Thickness = 2
