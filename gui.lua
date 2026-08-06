@@ -138,15 +138,13 @@ close.MouseButton1Click:Connect(function()
         minimized = true
         
         frame.Size = UDim2.new(0,60,0,60)
-        title.Visible = false
-        search.Visible = false
-        result.Visible = false
-        
-        for _,v in pairs(frame:GetChildren()) do
-            if v:IsA("TextButton") and v ~= close then
-                v.Visible = false
-            end
+        for _,obj in ipairs(frame:GetChildren()) do
+    if obj ~= close and obj ~= closeCorner then
+        if obj:IsA("GuiObject") then
+            obj.Visible = false
         end
+    end
+				end
         
         close.Text = "+"
         
