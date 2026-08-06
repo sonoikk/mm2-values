@@ -57,6 +57,11 @@ frame.Size = UDim2.new(0,300,0,360)
 frame.Position = UDim2.new(0.5, -150, 0.5, -175)
 frame.BackgroundColor3 = Color3.fromRGB(35,35,35)
 frame.Parent = gui
+frame.Active = true
+mini.Active = true
+
+makeDraggable(frame)
+makeDraggable(mini)
 	
 local mini = Instance.new("TextButton")
 mini.Size = UDim2.new(0,50,0,50)
@@ -69,8 +74,6 @@ mini.TextColor3 = Color3.new(1,1,1)
 mini.Visible = false
 mini.Parent = gui
 mini.Active = true
-
-makeDraggable(frame)
 
 local miniCorner = Instance.new("UICorner")
 miniCorner.CornerRadius = UDim.new(0,12)
@@ -89,14 +92,6 @@ title.TextScaled = true
 title.Font = Enum.Font.GothamBold
 title.TextColor3 = Color3.new(1,1,1)
 title.Parent = frame
-
-frame.InputBegan:Connect(function(input)
-
-        UIS.InputEnded:Once(function()
-            move:Disconnect()
-        end)
-    end
-end)
 
 local close = Instance.new("TextButton")
 close.Size = UDim2.new(0,35,0,35)
