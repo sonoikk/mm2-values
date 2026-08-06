@@ -80,17 +80,45 @@ local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0,12)
 corner.Parent = frame
 
-local title = Instance.new("TextLabel")
+local title = Instance.new("TextButton")
 title.Size = UDim2.new(1,0,0,40)
 title.BackgroundTransparency = 1
 title.Text = "MM2 Mobile Helper"
 title.TextScaled = true
 title.Font = Enum.Font.GothamBold
 title.TextColor3 = Color3.new(1,1,1)
+title.AutoButtonColor = false
 title.Parent = frame
 title.Active = true
 
-makeDraggable(title)
+title.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Touch
+    or input.UserInputType == Enum.UserInputType.MouseButton1 then
+        
+        local start = input.Position
+        local startFrame = frame.Position
+
+        local move
+        move = UIS.InputChanged:Connect(function(i)
+            if i.UserInputType == Enum.UserInputType.Touch
+            or i.UserInputType == Enum.UserInputType.MouseMovement then
+
+                local delta = i.Position - start
+
+                frame.Position = UDim2.new(
+                    startFrame.X.Scale,
+                    startFrame.X.Offset + delta.X,
+                    startFrame.Y.Scale,
+                    startFrame.Y.Offset + delta.Y
+                )
+            end
+        end)
+
+        UIS.InputEnded:Once(function()
+            move:Disconnect()
+        end)
+    end
+end)
 
 local close = Instance.new("TextButton")
 close.Size = UDim2.new(0,35,0,35)
