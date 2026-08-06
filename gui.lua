@@ -91,27 +91,6 @@ title.TextColor3 = Color3.new(1,1,1)
 title.Parent = frame
 
 frame.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.Touch
-    or input.UserInputType == Enum.UserInputType.MouseButton1 then
-        
-        local start = input.Position
-        local startFrame = frame.Position
-
-        local move
-        move = UIS.InputChanged:Connect(function(i)
-            if i.UserInputType == Enum.UserInputType.Touch
-            or i.UserInputType == Enum.UserInputType.MouseMovement then
-
-                local delta = i.Position - start
-
-                frame.Position = UDim2.new(
-                    startFrame.X.Scale,
-                    startFrame.X.Offset + delta.X,
-                    startFrame.Y.Scale,
-                    startFrame.Y.Offset + delta.Y
-                )
-            end
-        end)
 
         UIS.InputEnded:Once(function()
             move:Disconnect()
