@@ -13,9 +13,6 @@ frame.Size = UDim2.new(0,300,0,360)
 frame.Position = UDim2.new(0.5, -150, 0.5, -175)
 frame.BackgroundColor3 = Color3.fromRGB(35,35,35)
 frame.Parent = gui
-
-makeDraggable(mini)
-makeDraggable(frame)
 	
 local mini = Instance.new("TextButton")
 mini.Size = UDim2.new(0,50,0,50)
@@ -28,28 +25,14 @@ mini.TextColor3 = Color3.new(1,1,1)
 mini.Visible = false
 mini.Parent = gui
 
+makeDraggable(mini)
+makeDraggable(frame)
+
 local miniCorner = Instance.new("UICorner")
 miniCorner.CornerRadius = UDim.new(0,12)
 miniCorner.Parent = mini
 
 local UIS = game:GetService("UserInputService")
-
-local dragging = false
-local dragStart
-local startPos
-
-local function startDrag(input)
-	dragging = true
-	dragStart = input.Position
-	startPos = frame.Position
-end
-
-frame.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1
-	or input.UserInputType == Enum.UserInputType.Touch then
-		startDrag(input)
-	end
-end)
 
 local function makeDraggable(object)
 
