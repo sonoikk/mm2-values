@@ -91,7 +91,7 @@ title.AutoButtonColor = false
 title.Parent = frame
 title.Active = true
 
-title.InputBegan:Connect(function(input)
+frame.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.Touch
     or input.UserInputType == Enum.UserInputType.MouseButton1 then
         
