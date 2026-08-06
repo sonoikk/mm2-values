@@ -181,8 +181,4 @@ local searchCorner = Instance.new("UICorner")
 searchCorner.CornerRadius = UDim.new(0,8)
 searchCorner.Parent = search
 
-local function checkTrade(yourItems, theirItems)
-
-print("MM2 GUI loaded!")
-
 end
