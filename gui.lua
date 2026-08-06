@@ -10,6 +10,8 @@ gui.Parent = player:WaitForChild("PlayerGui")
 
 local UIS = game:GetService("UserInputService")
 
+local TweenService = game:GetService("TweenService")
+	
 local function makeDraggable(object)
 
     local dragging = false
@@ -75,13 +77,42 @@ mini.Active = true
 
 makeDraggable(mini)
 
+local normalSize = mini.Size
+
+mini.MouseEnter:Connect(function()
+    TweenService:Create(
+        mini,
+        TweenInfo.new(0.15),
+        {Size = UDim2.new(0,60,0,60)}
+    ):Play()
+end)
+
+mini.MouseLeave:Connect(function()
+    TweenService:Create(
+        mini,
+        TweenInfo.new(0.15),
+        {Size = normalSize}
+    ):Play()
+end)
+
 local miniCorner = Instance.new("UICorner")
 miniCorner.CornerRadius = UDim.new(0,12)
 miniCorner.Parent = mini
 
+local miniStroke = Instance.new("UIStroke")
+miniStroke.Thickness = 2
+miniStroke.Color = Color3.fromRGB(120,120,255)
+miniStroke.Parent = mini
+
 local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0,12)
 corner.Parent = frame
+
+local shadow = Instance.new("UIStroke")
+shadow.Thickness = 2
+shadow.Color = Color3.fromRGB(80,80,80)
+shadow.Transparency = 0.3
+shadow.Parent = frame
 
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1,-100,0,40)
@@ -117,20 +148,38 @@ minimize.TextColor3 = Color3.new(1,1,1)
 minimize.Parent = frame
 
 minimize.MouseButton1Click:Connect(function()
+
+    local tween = TweenService:Create(
+        frame,
+        TweenInfo.new(0.25),
+        {Size = UDim2.new(0,0,0,0)}
+    )
+
+    tween:Play()
+    tween.Completed:Wait()
+
     frame.Visible = false
+    frame.Size = UDim2.new(0,300,0,210)
     mini.Visible = true
 end)
 
 mini.MouseButton1Click:Connect(function()
-    frame.Visible = true
+
     mini.Visible = false
+    frame.Visible = true
+    frame.Size = UDim2.new(0,0,0,0)
+
+    TweenService:Create(
+        frame,
+        TweenInfo.new(0.25),
+        {Size = UDim2.new(0,300,0,210)}
+    ):Play()
+
 end)
     
 local closeCorner = Instance.new("UICorner")
 closeCorner.CornerRadius = UDim.new(0,8)
 closeCorner.Parent = close
-
-
 
 local search = Instance.new("TextBox")
 search.Size = UDim2.new(0.9,0,0,40)
