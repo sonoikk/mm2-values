@@ -14,6 +14,9 @@ frame.Position = UDim2.new(0.5, -150, 0.5, -175)
 frame.BackgroundColor3 = Color3.fromRGB(35,35,35)
 frame.Parent = gui
 
+makeDraggable(mini)
+makeDraggable(frame)
+	
 local mini = Instance.new("TextButton")
 mini.Size = UDim2.new(0,50,0,50)
 mini.Position = frame.Position
