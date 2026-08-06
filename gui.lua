@@ -116,42 +116,7 @@ local closeCorner = Instance.new("UICorner")
 closeCorner.CornerRadius = UDim.new(0,8)
 closeCorner.Parent = close
 
-local minimized = false
 
-local oldSize = frame.Size
-
-close.MouseButton1Click:Connect(function()
-    if not minimized then
-        minimized = true
-        
-        frame.Size = UDim2.new(0,60,0,60)
-        for _,obj in ipairs(frame:GetChildren()) do
-    if obj ~= close and obj ~= closeCorner then
-        if obj:IsA("GuiObject") then
-            obj.Visible = false
-        end
-    end
-				end
-        
-        close.Text = "+"
-        
-    else
-        minimized = false
-        
-        frame.Size = oldSize
-        title.Visible = true
-        search.Visible = true
-        result.Visible = true
-        
-        for _,v in pairs(frame:GetChildren()) do
-            if v:IsA("TextButton") then
-                v.Visible = true
-            end
-        end
-        
-        close.Text = "X"
-    end
-end)
 
 local search = Instance.new("TextBox")
 search.Size = UDim2.new(0.9,0,0,40)
