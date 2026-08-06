@@ -1,5 +1,5 @@
-return function(Values)
-
+return function(Values, Offers)
+	
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
@@ -185,8 +185,10 @@ local buttons = {
     "Value Checker",
     "Mega W",
     "W",
-    "Fair"
-}
+    "Fair",
+    "L",
+    "Mega L"
+	}
 
 for i,v in ipairs(buttons) do
     local b = Instance.new("TextButton")
