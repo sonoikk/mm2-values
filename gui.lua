@@ -70,7 +70,7 @@ mini.Visible = false
 mini.Parent = gui
 mini.Active = true
 
-makeDraggable(mini)
+makeDraggable(frame)
 
 local miniCorner = Instance.new("UICorner")
 miniCorner.CornerRadius = UDim.new(0,12)
@@ -80,16 +80,15 @@ local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0,12)
 corner.Parent = frame
 
-local title = Instance.new("TextButton")
-title.Size = UDim2.new(1,0,0,40)
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1,-90,0,40)
+title.Position = UDim2.new(0,10,0,0)
 title.BackgroundTransparency = 1
 title.Text = "MM2 Mobile Helper"
 title.TextScaled = true
 title.Font = Enum.Font.GothamBold
 title.TextColor3 = Color3.new(1,1,1)
-title.AutoButtonColor = false
 title.Parent = frame
-title.Active = true
 
 frame.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.Touch
