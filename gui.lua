@@ -181,6 +181,42 @@ local searchCorner = Instance.new("UICorner")
 searchCorner.CornerRadius = UDim.new(0,8)
 searchCorner.Parent = search
 
+local function checkTrade(yourItems, theirItems)
+
+    local yourValue = 0
+    local theirValue = 0
+
+    for _,item in pairs(yourItems) do
+        if Values.Godlies[item] then
+            yourValue += Values.Godlies[item].Value
+        end
+    end
+
+    for _,item in pairs(theirItems) do
+        if Values.Godlies[item] then
+            theirValue += Values.Godlies[item].Value
+        end
+    end
+
+    if yourValue == 0 then
+        return "Not found"
+    end
+
+    local percent = ((theirValue - yourValue) / yourValue) * 100
+
+    if percent >= Offers.MegaW then
+        return "MEGA W +"..math.floor(percent).."%"
+    elseif percent >= Offers.W then
+        return "W +"..math.floor(percent).."%"
+    elseif percent >= Offers.L then
+        return "Fair "..math.floor(percent).."%"
+    elseif percent >= Offers.MegaL then
+        return "L "..math.floor(percent).."%"
+    else
+        return "MEGA L "..math.floor(percent).."%"
+    end
+	end
+
 local buttons = {
     "Value Checker",
     "Mega W",
