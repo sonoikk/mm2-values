@@ -48,15 +48,6 @@ frame.InputBegan:Connect(function(input)
 	end
 end)
 
-close.InputBegan:Connect(function(input)
-	if minimized and (
-		input.UserInputType == Enum.UserInputType.MouseButton1
-		or input.UserInputType == Enum.UserInputType.Touch
-	) then
-		startDrag(input)
-	end
-end)
-
 frame.InputChanged:Connect(function(input)
 	if dragging and (
 		input.UserInputType == Enum.UserInputType.MouseMovement
@@ -102,7 +93,8 @@ close.BackgroundColor3 = Color3.fromRGB(220,60,60)
 close.TextColor3 = Color3.new(1,1,1)
 close.Parent = frame
 close.MouseButton1Click:Connect(function()
-    gui:Destroy()
+    frame.Visible = false
+    mini.Visible = true
 end)
 
 local minimize = Instance.new("TextButton")
@@ -114,11 +106,6 @@ minimize.Font = Enum.Font.GothamBold
 minimize.BackgroundColor3 = Color3.fromRGB(70,70,70)
 minimize.TextColor3 = Color3.new(1,1,1)
 minimize.Parent = frame
-
-close.MouseButton1Click:Connect(function()
-    frame.Visible = false
-    mini.Visible = true
-end)
 
 mini.MouseButton1Click:Connect(function()
     frame.Visible = true
