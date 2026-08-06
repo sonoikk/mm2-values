@@ -182,7 +182,7 @@ local Values = {
         Change = "+10"
    },
 
-        ["Rainbow"] = {
+   ["Rainbow"] = {
         Value = 410,
         Range = "N/A",
         Stability = "Stable",
