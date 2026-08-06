@@ -68,6 +68,7 @@ mini.BackgroundColor3 = Color3.fromRGB(35,35,35)
 mini.TextColor3 = Color3.new(1,1,1)
 mini.Visible = false
 mini.Parent = gui
+mini.Active = true
 
 makeDraggable(mini)
 
@@ -87,6 +88,7 @@ title.TextScaled = true
 title.Font = Enum.Font.GothamBold
 title.TextColor3 = Color3.new(1,1,1)
 title.Parent = frame
+title.Active = true
 
 makeDraggable(title)
 
